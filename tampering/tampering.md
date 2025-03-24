@@ -25,5 +25,14 @@ This example demonstrates tampering through script injection.
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts**
+    Insecure.ts takes a user's input and redners it, which allows for cross-site
+    scripting attacks.
+
 2. Briefly explain how a malicious attacker can exploit them.
+    If a malicious user submits script code instead of just a string, it will be executed
+    when loaded by the browser, so if viewed by other users, they will load and run the
+    malicious script.
+
 3. Briefly explain why **secure.ts** does not have the same vulnerabilties?
+    Secure.ts sanitizes the input, so the HTML script tag submitted is just treated 
+    as a string and cannot be executed by the browser. 

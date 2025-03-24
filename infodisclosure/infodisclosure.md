@@ -31,5 +31,15 @@ This will create a database in MongoDB called __infodisclosure__. Verify its pre
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts**
+    Insecure.ts reads in the 'username' field from the request and uses that to search the 
+    database. 
+
 2. Briefly explain how a malicious attacker can exploit them.
+    A malicious user can supply a query in the field instead of a real username, in the above
+    example setting the username to "username[$ne]=" which when plugged in to the database search, 
+    fetches a full user object including their password from the database.
+
 3. Briefly explain the defensive techniques used in **secure.ts** to prevent the information disclosure vulnerability?
+    Secure.ts verifies that the input is only a string and not a potential script. That way, any 
+    text submitted as 'userinfo?' must be a string and treated as a username and cannot be 
+    run on the database.

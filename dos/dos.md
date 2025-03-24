@@ -31,5 +31,12 @@ This will create a database in MongoDB called __infodisclosure__. Verify its pre
 Answer the following:
 
 1. Briefly explain the potential vulnerabilities in **insecure.ts** that can lead to a DoS attack.
+    The server reads in the user id, queries the database, and sends back the resulting object.
+
 2. Briefly explain how a malicious attacker can exploit them.
+    By sending a request which make the database retireve the wrong type of information, the
+    server crashes when trying to send the response in a DOS attack.
+
 3. Briefly explain the defensive techniques used in **secure.ts** to prevent the DoS vulnerability?
+    Secure.ts adds a try catch around the response sender so if it fails, it does not crash the 
+    server and instead returns an internal server error, preventing the denial of service. 
